@@ -26,7 +26,7 @@ class _AuthScreenState extends State<AuthScreen> {
   void _checkSavedUser() async {
   final savedUser = await LocalStorageService.getUser();
   if (savedUser != null && savedUser.isLoggedIn) {
-    Navigator.of(context).pushReplacementNamed('/home');
+    Navigator.of(context).pushReplacementNamed('/upload');
   }
 }
 

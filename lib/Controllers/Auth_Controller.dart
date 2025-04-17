@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextconsult/Helpers/Hash.dart';
+import 'package:nextconsult/Services/BlockedService.dart';
 
 import '../Helpers/BiometricService.dart';
 import '../Helpers/LocalStorageService.dart';
@@ -12,7 +13,8 @@ class AuthController with ChangeNotifier {
   final signupEmailController = TextEditingController();
   final signupPasswordController = TextEditingController();
   final signupConfirmPasswordController = TextEditingController();
-
+  static const unlockCode = '123456'; // The unlock code
+  static const maxFailedAttempts = 3;
   final loginFormKey = GlobalKey<FormState>();
   final signupFormKey = GlobalKey<FormState>();
 
@@ -88,6 +90,11 @@ class AuthController with ChangeNotifier {
     signupConfirmPasswordController.dispose();
   }
 
+  Future<bool> isAccountLocked() async {
+    final user = await LocalStorageService.getUser();
+    return user?.isLocked == true;
+  }
+
   Future<void> submitLogin(BuildContext context) async {
     if (!loginFormKey.currentState!.validate()) return;
     setisloading(true);
@@ -95,25 +102,90 @@ class AuthController with ChangeNotifier {
 
     try {
       final savedUser = await LocalStorageService.getUser();
-      final enteredPasswordHash = hashPassword(loginPasswordController.text);
+      final enteredPassword = loginPasswordController.text;
 
+      // Check if account is locked
+      if (savedUser?.isLocked == true) {
+        // Check if unlock code is entered
+        if (enteredPassword == unlockCode) {
+          // Unlock the account
+          savedUser!.isLocked = false;
+          savedUser.failedLoginAttempts = 0;
+          savedUser.lockTime = null;
+          await LocalStorageService.saveUser(savedUser);
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Account unlocked successfully! Please login with your credentials.',
+              ),
+            ),
+          );
+          return;
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Account locked. Enter unlock code to unlock.'),
+            ),
+          );
+          return;
+        }
+      }
+
+      // Normal login validation
       if (savedUser == null ||
           savedUser.email != loginEmailController.text ||
-          savedUser.passwordHash != enteredPasswordHash) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Invalid email or password')));
+          savedUser.passwordHash != hashPassword(enteredPassword)) {
+        // Only increment attempts if the email matches an existing user
+        if (savedUser != null && savedUser.email == loginEmailController.text) {
+          savedUser.failedLoginAttempts++;
+
+          // Lock account if max attempts reached
+          if (savedUser.failedLoginAttempts >= maxFailedAttempts) {
+            savedUser.isLocked = true;
+            savedUser.lockTime = DateTime.now();
+            Blockedservice().sendEmail(
+              email: 'test@gmail.com',
+              time: DateTime.now().toString(),
+              passcode: 123456,
+            );
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'Account locked due to too many failed attempts. Enter unlock code to unlock.',
+                ),
+              ),
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'Invalid credentials. ${maxFailedAttempts - savedUser.failedLoginAttempts} attempts remaining.',
+                ),
+              ),
+            );
+          }
+
+          await LocalStorageService.saveUser(savedUser);
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Invalid credentials')));
+        }
         return;
       }
 
+      // Successful login - reset attempts
       savedUser.isLoggedIn = true;
+      savedUser.failedLoginAttempts = 0;
+      savedUser.isLocked = false;
+      savedUser.lockTime = null;
       await LocalStorageService.saveUser(savedUser);
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/upload');
     } catch (e) {
-      print("Login error: $e");
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Login failed: $e')));
+      ).showSnackBar(SnackBar(content: Text('Login failed: ${e.toString()}')));
     } finally {
       setisloading(false);
       notifyListeners();
@@ -213,8 +285,12 @@ class AuthController with ChangeNotifier {
     final user = await LocalStorageService.getUser();
     if (user != null) {
       user.isLoggedIn = false;
+      user.failedLoginAttempts = 0; // Reset failed attempts on logout
       await LocalStorageService.saveUser(user);
     }
+    // Clear all controllers
+    clearControllers();
+    // Navigate back to auth screen
     Navigator.of(context).pushReplacementNamed('/auth');
   }
 }

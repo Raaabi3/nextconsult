@@ -5,6 +5,7 @@ import 'package:nextconsult/Widgets/CustomTextField.dart';
 
 import '../Helpers/BiometricService.dart';
 import '../Helpers/LocalStorageService.dart';
+import '../Models/UserModel.dart';
 
 class Signinform extends StatelessWidget {
   final dynamic authController;
@@ -76,8 +77,23 @@ class Signinform extends StatelessWidget {
               if (success) {
                 savedUser.isLoggedIn = true;
                 await LocalStorageService.saveUser(savedUser);
-                Navigator.of(context).pushReplacementNamed('/home');
+                Navigator.of(context).pushReplacementNamed('/upload');
               }
+            },
+          ),
+           FutureBuilder<UserModel?>(
+            future: LocalStorageService.getUser(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data?.isLocked == true) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Text(
+                    'Account locked. Enter unlock code in password field.',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                );
+              }
+              return SizedBox.shrink();
             },
           ),
         ],

@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'Controllers/Auth_Controller.dart';
 import 'Helpers/BiometricService.dart';
 import 'Helpers/LocalStorageService.dart';
-import 'Views/HomeScreen.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
@@ -47,7 +46,6 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/auth': (context) => const AuthScreen(),
-        '/home': (context) => const HomeScreen(),
         '/upload': (context) => const UploadScreen(),
       },
 

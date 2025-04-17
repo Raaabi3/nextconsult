@@ -1,32 +1,4 @@
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorageService {
-  static const String userKey = 'user'; // Consistent key name
-
-  static Future<void> saveUser(UserModel user) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(userKey, jsonEncode(user.toJson()));
-  }
-
-  static Future<UserModel?> getUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    final userJson = prefs.getString(userKey); // Use consistent key
-    if (userJson == null) return null;
-    
-    try {
-      return UserModel.fromJsonSafe(jsonDecode(userJson)); // Use the safe method
-    } catch (e) {
-      print('Error parsing user: $e');
-      return null;
-    }
-  }
-
-  static Future<void> clearUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(userKey);
-  }
-}
 
 class UserModel {
   final String id;
@@ -34,6 +6,9 @@ class UserModel {
   final String email;
   final String passwordHash;
   bool isLoggedIn;
+  int failedLoginAttempts; // Track failed attempts
+  bool isLocked; // Track lock status
+  DateTime? lockTime; // When account was locked
 
   UserModel({
     required this.id,
@@ -41,6 +16,9 @@ class UserModel {
     required this.email,
     required this.passwordHash,
     this.isLoggedIn = false,
+    this.failedLoginAttempts = 0,
+    this.isLocked = false,
+    this.lockTime,
   });
 
   // Safe parsing method
@@ -62,15 +40,22 @@ class UserModel {
       email: json['email'] as String,
       passwordHash: json['passwordHash'] as String,
       isLoggedIn: json['isLoggedIn'] as bool? ?? false,
+      failedLoginAttempts: json['failedLoginAttempts'] as int? ?? 0,
+      isLocked: json['isLocked'] as bool? ?? false,
+      lockTime: json['lockTime'] != null 
+          ? DateTime.parse(json['lockTime'] as String)
+          : null,
     );
   }
 
-  // Add this complete toJson() method
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'email': email,
     'passwordHash': passwordHash,
     'isLoggedIn': isLoggedIn,
+    'failedLoginAttempts': failedLoginAttempts,
+    'isLocked': isLocked,
+    'lockTime': lockTime?.toIso8601String(),
   };
 }

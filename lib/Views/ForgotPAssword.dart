@@ -13,6 +13,7 @@ class Forgotpassword extends StatelessWidget {
     final emailService = Provider.of<EmailService>(context, listen: false);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -27,6 +28,7 @@ class Forgotpassword extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset("assets/gifs/Forgot password.gif", height: 200),
             Text(
               "Forgot Password?",
               style: TextStyle(fontSize: 30, color: Colors.blueAccent),
@@ -71,7 +73,7 @@ class Forgotpassword extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 40),
+                fixedSize: Size(200, 50),
                 backgroundColor: Colors.blueAccent,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(

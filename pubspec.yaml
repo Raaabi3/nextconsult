@@ -82,6 +82,8 @@ flutter:
     - assets/logos/facebook.png
     - assets/logos/google.png
     - assets/images/user.png
+    - assets/gifs/Forgot password.gif
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

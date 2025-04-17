@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:nextconsult/Widgets/LocalExplorerScreen.dart';
+import '../Controllers/Auth_Controller.dart';
 import '../Helpers/GoogleSignIn.dart';
 
 class UploadScreen extends StatefulWidget {
@@ -26,12 +27,13 @@ class _DriveScreen extends State<UploadScreen> {
 
   String _currentFolderId = 'root';
   List<String> _folderStack = ['root'];
+  final AuthController _authController = AuthController();
 
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2,
     crossAxisSpacing: 8,
     mainAxisSpacing: 8,
-    childAspectRatio: 0.9, 
+    childAspectRatio: 0.9,
   );
 
   Future<void> _navigateToFolder(String folderId) async {
@@ -279,10 +281,11 @@ class _DriveScreen extends State<UploadScreen> {
     );
   }
 
-   Widget _buildItemTile(drive.File item) {
+  Widget _buildItemTile(drive.File item) {
     final isFolder = item.mimeType == 'application/vnd.google-apps.folder';
 
     return Card(
+      color: Colors.grey[100],
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.all(4),
@@ -332,7 +335,6 @@ class _DriveScreen extends State<UploadScreen> {
       ),
     );
   }
-
 
   void _refreshFileList() {
     setState(() {
@@ -422,17 +424,28 @@ class _DriveScreen extends State<UploadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: Drawer(
+        backgroundColor: Colors.white,
         child: Column(
           children: [
             AppBar(
+              backgroundColor: Colors.blueAccent,
               title: Row(
                 children: [
                   CircleAvatar(
+                    backgroundColor: Colors.white,
+
                     child: Image.asset("assets/images/user.png", scale: 2),
                   ),
                   const SizedBox(width: 10),
-                  Text('User Name'),
+                  Text("Mohamed Ben Rabie",style: TextStyle(color: Colors.white),),
+                  Spacer(),
+                  IconButton(
+                    color: Colors.white,
+                    icon: Icon(Icons.logout),
+                    onPressed: () => _authController.logout(context),
+                  ),
                 ],
               ),
 
@@ -461,11 +474,16 @@ class _DriveScreen extends State<UploadScreen> {
       ),
 
       appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
         title: Row(
           children: [
-            const Text('Google Drive Files'),
+            const Text(
+              'Google Drive Files',
+              style: TextStyle(color: Colors.white),
+            ),
             Spacer(),
             IconButton(
+              color: Colors.white,
               onPressed:
                   _isLoading
                       ? null
@@ -479,13 +497,14 @@ class _DriveScreen extends State<UploadScreen> {
               icon: const Icon(Icons.upload),
             ),
             IconButton(
+              color: Colors.white,
+
               onPressed: _isLoading ? null : _refreshFileList,
               icon: const Icon(Icons.refresh),
               tooltip: "Refresh Files",
             ),
           ],
         ),
-        
       ),
       body: Column(
         children: [
@@ -518,10 +537,11 @@ class _DriveScreen extends State<UploadScreen> {
                 if (index < _driveItems.length) {
                   return _buildItemTile(_driveItems[index]);
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return Align(alignment: Alignment.center,child: CircularProgressIndicator());
                 }
               },
-            )),
+            ),
+          ),
         ],
       ),
     );

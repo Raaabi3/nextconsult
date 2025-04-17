@@ -5,6 +5,7 @@ import 'package:googleapis_auth/auth_io.dart' as auth;
 import 'package:http/io_client.dart' as auth;
 
 import '../Models/UserModel.dart';
+import 'LocalStorageService.dart';
 
 Future<drive.DriveApi> getDriveApi() async {
   final client = await authenticate();
@@ -31,7 +32,7 @@ Future<void> signInWithGoogle(BuildContext context) async {
         passwordHash: '12345678',
       );
       await LocalStorageService.saveUser(user);
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/upload');
     }
     print("logi nsuccessful !!!!!!" + account.toString());
   } catch (error) {
