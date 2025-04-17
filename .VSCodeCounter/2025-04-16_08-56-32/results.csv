@@ -1,0 +1,20 @@
+"filename", "language", "Dart", "comment", "blank", "total"
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Controllers\Auth_Controller.dart", "Dart", 168, 7, 38, 213
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\BiometricService.dart", "Dart", 21, 0, 5, 26
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\FacebookSIgnIn.dart", "Dart", 14, 0, 2, 16
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\GoogleSIgnin.dart", "Dart", 12, 1, 3, 16
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\LocalStorageService.dart", "Dart", 20, 0, 5, 25
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Models\SignIn.dart", "Dart", 15, 1, 3, 19
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Models\UserModel.dart", "Dart", 20, 0, 4, 24
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Services\EmailService.dart", "Dart", 39, 0, 5, 44
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\AuthScreen.dart", "Dart", 144, 2, 10, 156
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\ForgotPAssword.dart", "Dart", 83, 0, 5, 88
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\HomeScreen.dart", "Dart", 20, 0, 4, 24
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\WelcomeScreen.dart", "Dart", 31, 0, 4, 35
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\CustomButton.dart", "Dart", 47, 0, 7, 54
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\CustomText.dart", "Dart", 28, 0, 3, 31
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\CustomTextfield.dart", "Dart", 50, 0, 3, 53
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\SignInForm.dart", "Dart", 77, 0, 4, 81
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\SignUpForm.dart", "Dart", 61, 0, 3, 64
+"c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\main.dart", "Dart", 49, 1, 10, 60
+"Total", "-", 899, 12, 118, 1029
