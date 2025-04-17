@@ -15,12 +15,13 @@ class Forgotpassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
-          color: Colors.grey,
+          color: Colors.blueAccent,
         ),
       ),
       body: Padding(

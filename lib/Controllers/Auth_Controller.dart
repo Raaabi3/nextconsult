@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nextconsult/Helpers/Hash.dart';
 import 'package:nextconsult/Services/BlockedService.dart';
-
-import '../Helpers/BiometricService.dart';
+import 'package:nextconsult/Services/EmailService.dart';
+import 'package:nextconsult/Services/OutlookService.dart';
 import '../Helpers/LocalStorageService.dart';
 import '../Models/UserModel.dart';
+import '../Services/DatabaseService.dart';
 
 class AuthController with ChangeNotifier {
   final loginEmailController = TextEditingController();
@@ -17,6 +18,7 @@ class AuthController with ChangeNotifier {
   static const maxFailedAttempts = 3;
   final loginFormKey = GlobalKey<FormState>();
   final signupFormKey = GlobalKey<FormState>();
+  final DatabaseService _dbService = DatabaseService();
 
   bool _isLogin = true;
   bool _isLoading = false;
@@ -33,7 +35,6 @@ class AuthController with ChangeNotifier {
     return emailRegex.hasMatch(email);
   }
 
-  // Send reset link logic
   void sendResetLink(BuildContext context) {
     final email = emailController.text.trim();
     if (email.isEmpty) {
@@ -50,7 +51,6 @@ class AuthController with ChangeNotifier {
       return;
     }
 
-    // Simulate sending email
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text("Reset link sent to $email")));
@@ -144,11 +144,24 @@ class AuthController with ChangeNotifier {
           if (savedUser.failedLoginAttempts >= maxFailedAttempts) {
             savedUser.isLocked = true;
             savedUser.lockTime = DateTime.now();
-            Blockedservice().sendEmail(
-              email: 'test@gmail.com',
-              time: DateTime.now().toString(),
-              passcode: 123456,
-            );
+            if (loginEmailController.text.contains("gmail.com")) {
+              Blockedservice().sendEmail(
+                email: 'test@gmail.com',
+                time: DateTime.now().toString(),
+                passcode: 123456,
+              );
+            } else if (loginEmailController.text.contains("@outlook.com") ||
+                loginEmailController.text.contains(".tn") ||
+                loginEmailController.text.contains("@hotmail.com") ||
+                loginEmailController.text.contains("@live.com") ||
+                loginEmailController.text.contains("@msn.com")) {
+              print("outlook address");
+              OutlookService().sendEmail(
+                email: loginEmailController.text,
+                time: DateTime.now().toString(),
+                passcode: 123456,
+              );
+            }
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
@@ -240,11 +253,6 @@ class AuthController with ChangeNotifier {
       setisloading(false);
       notifyListeners();
     }
-  }
-
-  void _setLoading(bool value) {
-    _isLoading = value;
-    notifyListeners();
   }
 
   String? validateLoginEmail(String? value) {

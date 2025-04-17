@@ -1,0 +1,153 @@
+Date : 2025-04-17 16:55:45
+Directory : c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult
+Total : 71 files,  2929 codes, 309 comments, 465 blanks, all 3703 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |         20 |      1,007 |         23 |        104 |      1,134 |
+| C++        |         16 |        564 |        131 |        189 |        884 |
+| XML        |         10 |        483 |         54 |         18 |        555 |
+| CMake      |          8 |        468 |          0 |         92 |        560 |
+| JSON       |          4 |        248 |          0 |          4 |        252 |
+| Swift      |          6 |         73 |          7 |         21 |        101 |
+| YAML       |          2 |         46 |         79 |         21 |        146 |
+| HTML       |          1 |         19 |         15 |          5 |         39 |
+| Markdown   |          2 |         13 |          0 |          9 |         22 |
+| Properties |          2 |          8 |          0 |          2 |         10 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                    |         71 |      2,929 |        309 |        465 |      3,703 |
+| . (Files)                                                                                                            |          3 |         56 |         79 |         28 |        163 |
+| android                                                                                                              |          9 |         87 |         52 |         17 |        156 |
+| android (Files)                                                                                                      |          1 |          3 |          0 |          1 |          4 |
+| android\app                                                                                                          |          7 |         79 |         52 |         15 |        146 |
+| android\app\src                                                                                                      |          7 |         79 |         52 |         15 |        146 |
+| android\app\src\debug                                                                                                |          1 |         15 |          5 |          8 |         28 |
+| android\app\src\main                                                                                                 |          5 |         61 |         43 |          6 |        110 |
+| android\app\src\main (Files)                                                                                         |          1 |         35 |         11 |          0 |         46 |
+| android\app\src\main\res                                                                                             |          4 |         26 |         32 |          6 |         64 |
+| android\app\src\main\res\drawable                                                                                    |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\drawable-v21                                                                                |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\values                                                                                      |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\main\res\values-night                                                                                |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\profile                                                                                              |          1 |          3 |          4 |          1 |          8 |
+| android\gradle                                                                                                       |          1 |          5 |          0 |          1 |          6 |
+| android\gradle\wrapper                                                                                               |          1 |          5 |          0 |          1 |          6 |
+| ios                                                                                                                  |          8 |        229 |          4 |         13 |        246 |
+| ios\Runner                                                                                                           |          7 |        222 |          2 |          9 |        233 |
+| ios\Runner (Files)                                                                                                   |          2 |         13 |          0 |          3 |         16 |
+| ios\RunnerTests                                                                                                      |          1 |          7 |          2 |          4 |         13 |
+| ios\Runner\Assets.xcassets                                                                                           |          3 |        148 |          0 |          4 |        152 |
+| ios\Runner\Assets.xcassets\AppIcon.appiconset                                                                        |          1 |        122 |          0 |          1 |        123 |
+| ios\Runner\Assets.xcassets\LaunchImage.imageset                                                                      |          2 |         26 |          0 |          3 |         29 |
+| ios\Runner\Base.lproj                                                                                                |          2 |         61 |          2 |          2 |         65 |
+| lib                                                                                                                  |         20 |      1,007 |         23 |        104 |      1,134 |
+| lib (Files)                                                                                                          |          1 |         -6 |          0 |          1 |         -5 |
+| lib\Controllers                                                                                                      |          1 |         87 |          5 |          0 |         92 |
+| lib\Helpers                                                                                                          |          7 |        236 |          6 |         34 |        276 |
+| lib\Models                                                                                                           |          2 |         18 |          1 |         -1 |         18 |
+| lib\Services                                                                                                         |          2 |         78 |          0 |         10 |         88 |
+| lib\Views                                                                                                            |          5 |        499 |         10 |         47 |        556 |
+| lib\Widgets                                                                                                          |          2 |         95 |          1 |         13 |        109 |
+| linux                                                                                                                |          9 |        340 |         37 |         92 |        469 |
+| linux (Files)                                                                                                        |          1 |        104 |          0 |         25 |        129 |
+| linux\flutter                                                                                                        |          4 |        120 |          9 |         27 |        156 |
+| linux\runner                                                                                                         |          4 |        116 |         28 |         40 |        184 |
+| macos                                                                                                                |          6 |        465 |          5 |         17 |        487 |
+| macos\Flutter                                                                                                        |          1 |         24 |          3 |          4 |         31 |
+| macos\Runner                                                                                                         |          4 |        434 |          0 |          9 |        443 |
+| macos\Runner (Files)                                                                                                 |          2 |         23 |          0 |          7 |         30 |
+| macos\RunnerTests                                                                                                    |          1 |          7 |          2 |          4 |         13 |
+| macos\Runner\Assets.xcassets                                                                                         |          1 |         68 |          0 |          1 |         69 |
+| macos\Runner\Assets.xcassets\AppIcon.appiconset                                                                      |          1 |         68 |          0 |          1 |         69 |
+| macos\Runner\Base.lproj                                                                                              |          1 |        343 |          0 |          1 |        344 |
+| web                                                                                                                  |          2 |         54 |         15 |          6 |         75 |
+| windows                                                                                                              |         14 |        691 |         94 |        188 |        973 |
+| windows (Files)                                                                                                      |          1 |         89 |          0 |         20 |        109 |
+| windows\flutter                                                                                                      |          4 |        140 |          9 |         29 |        178 |
+| windows\runner                                                                                                       |          9 |        462 |         85 |        139 |        686 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                             | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\README.md                                                     | Markdown   |         10 |          0 |          7 |         17 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\analysis_options.yaml                                         | YAML       |          3 |         22 |          4 |         29 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\debug\AndroidManifest.xml                     | XML        |         15 |          5 |          8 |         28 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\main\AndroidManifest.xml                      | XML        |         35 |         11 |          0 |         46 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\main\res\drawable-v21\launch_background.xml   | XML        |          4 |          7 |          2 |         13 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\main\res\drawable\launch_background.xml       | XML        |          4 |          7 |          2 |         13 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\main\res\values-night\styles.xml              | XML        |          9 |          9 |          1 |         19 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\main\res\values\styles.xml                    | XML        |          9 |          9 |          1 |         19 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\app\src\profile\AndroidManifest.xml                   | XML        |          3 |          4 |          1 |          8 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\gradle.properties                                     | Properties |          3 |          0 |          1 |          4 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\android\gradle\wrapper\gradle-wrapper.properties              | Properties |          5 |          0 |          1 |          6 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\RunnerTests\RunnerTests.swift                             | Swift      |          7 |          2 |          4 |         13 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\AppDelegate.swift                                  | Swift      |         12 |          0 |          2 |         14 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Assets.xcassets\AppIcon.appiconset\Contents.json   | JSON       |        122 |          0 |          1 |        123 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Assets.xcassets\LaunchImage.imageset\Contents.json | JSON       |         23 |          0 |          1 |         24 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Assets.xcassets\LaunchImage.imageset\README.md     | Markdown   |          3 |          0 |          2 |          5 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Base.lproj\LaunchScreen.storyboard                 | XML        |         36 |          1 |          1 |         38 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Base.lproj\Main.storyboard                         | XML        |         25 |          1 |          1 |         27 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\ios\Runner\Runner-Bridging-Header.h                           | C++        |          1 |          0 |          1 |          2 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Controllers\Auth_Controller.dart                          | Dart       |         87 |          5 |          0 |         92 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\DatabaseHelper.dart                               | Dart       |        105 |          4 |         13 |        122 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\FileHandler.dart                                  | Dart       |         34 |          0 |          5 |         39 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\GoogleSIgnin.dart                                 | Dart       |         45 |         -1 |          5 |         49 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\Hash.dart                                         | Dart       |          7 |          0 |          1 |          8 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\LocalStorageService.dart                          | Dart       |         20 |          0 |          3 |         23 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\PermissionHandler.dart                            | Dart       |          6 |          0 |          2 |          8 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Helpers\SecureStorage.dart                                | Dart       |         19 |          3 |          5 |         27 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Models\SignIn.dart                                        | Dart       |        -15 |         -1 |         -3 |        -19 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Models\UserModel.dart                                     | Dart       |         33 |          2 |          2 |         37 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Services\BlockedService.dart                              | Dart       |         39 |          0 |          5 |         44 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Services\OutlookService.dart                              | Dart       |         39 |          0 |          5 |         44 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\AuthScreen.dart                                     | Dart       |         -8 |          6 |          1 |         -1 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\DriveScreen.dart                                    | Dart       |        522 |          4 |         48 |        574 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\ForgotPAssword.dart                                 | Dart       |          3 |          0 |          0 |          3 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\HomeScreen.dart                                     | Dart       |        -20 |          0 |         -4 |        -24 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Views\WelcomeScreen.dart                                  | Dart       |          2 |          0 |          2 |          4 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\LocalExplorerScreen.dart                          | Dart       |         73 |          1 |         12 |         86 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\Widgets\SignInForm.dart                                   | Dart       |         22 |          0 |          1 |         23 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\lib\main.dart                                                 | Dart       |         -6 |          0 |          1 |         -5 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\CMakeLists.txt                                          | CMake      |        104 |          0 |         25 |        129 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\flutter\CMakeLists.txt                                  | CMake      |         79 |          0 |         10 |         89 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\flutter\generated_plugin_registrant.cc                  | C++        |         15 |          4 |          5 |         24 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\flutter\generated_plugin_registrant.h                   | C++        |          5 |          5 |          6 |         16 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\flutter\generated_plugins.cmake                         | CMake      |         21 |          0 |          6 |         27 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\runner\CMakeLists.txt                                   | CMake      |         21 |          0 |          6 |         27 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\runner\main.cc                                          | C++        |          5 |          0 |          2 |          7 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\runner\my_application.cc                                | C++        |         83 |         21 |         27 |        131 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\linux\runner\my_application.h                                 | C++        |          7 |          7 |          5 |         19 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\Flutter\GeneratedPluginRegistrant.swift                 | Swift      |         24 |          3 |          4 |         31 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\RunnerTests\RunnerTests.swift                           | Swift      |          7 |          2 |          4 |         13 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\Runner\AppDelegate.swift                                | Swift      |         11 |          0 |          3 |         14 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\Runner\Assets.xcassets\AppIcon.appiconset\Contents.json | JSON       |         68 |          0 |          1 |         69 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\Runner\Base.lproj\MainMenu.xib                          | XML        |        343 |          0 |          1 |        344 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\macos\Runner\MainFlutterWindow.swift                          | Swift      |         12 |          0 |          4 |         16 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\pubspec.yaml                                                  | YAML       |         43 |         57 |         17 |        117 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\web\index.html                                                | HTML       |         19 |         15 |          5 |         39 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\web\manifest.json                                             | JSON       |         35 |          0 |          1 |         36 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\CMakeLists.txt                                        | CMake      |         89 |          0 |         20 |        109 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\flutter\CMakeLists.txt                                | CMake      |         98 |          0 |         12 |        110 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\flutter\generated_plugin_registrant.cc                | C++        |         15 |          4 |          5 |         24 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\flutter\generated_plugin_registrant.h                 | C++        |          5 |          5 |          6 |         16 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\flutter\generated_plugins.cmake                       | CMake      |         22 |          0 |          6 |         28 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\CMakeLists.txt                                 | CMake      |         34 |          0 |          7 |         41 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\flutter_window.cpp                             | C++        |         49 |          7 |         16 |         72 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\flutter_window.h                               | C++        |         20 |          5 |          9 |         34 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\main.cpp                                       | C++        |         30 |          4 |         10 |         44 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\resource.h                                     | C++        |          9 |          6 |          2 |         17 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\utils.cpp                                      | C++        |         54 |          2 |         10 |         66 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\utils.h                                        | C++        |          8 |          6 |          6 |         20 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\win32_window.cpp                               | C++        |        210 |         24 |         55 |        289 |
+| c:\Users\mohamed\Desktop\Mohamed ben rabie\nextconsult\windows\runner\win32_window.h                                 | C++        |         48 |         31 |         24 |        103 |
+| Total                                                                                                                |            |      2,929 |        309 |        465 |      3,703 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

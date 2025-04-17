@@ -6,8 +6,6 @@ import 'package:nextconsult/Views/DriveScreen.dart';
 import 'package:nextconsult/Views/WelcomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'Controllers/Auth_Controller.dart';
-import 'Helpers/BiometricService.dart';
-import 'Helpers/LocalStorageService.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
@@ -42,8 +40,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
+
       routes: {
         '/auth': (context) => const AuthScreen(),
         '/upload': (context) => const UploadScreen(),

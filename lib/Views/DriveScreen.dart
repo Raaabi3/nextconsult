@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
-import 'package:nextconsult/Widgets/LocalExplorerScreen.dart';
 import '../Controllers/Auth_Controller.dart';
 import '../Helpers/GoogleSignIn.dart';
 
@@ -28,6 +27,58 @@ class _DriveScreen extends State<UploadScreen> {
   String _currentFolderId = 'root';
   List<String> _folderStack = ['root'];
   final AuthController _authController = AuthController();
+  Future<List<drive.File>> _fetchAllFolders() async {
+    final driveApi = await getDriveApi();
+    final response = await driveApi.files.list(
+      q: "mimeType='application/vnd.google-apps.folder' and trashed = false",
+      $fields: "files(id, name, parents)",
+    );
+    return response.files ?? [];
+  }
+
+  Widget _buildFolderTree(List<drive.File> allFolders) {
+    final rootFolders =
+        allFolders.where((folder) {
+          return folder.parents == null ||
+              folder.parents!.isEmpty ||
+              !allFolders.any((f) => f.id == folder.parents!.first);
+        }).toList();
+
+    return ListView.builder(
+      itemCount: rootFolders.length,
+      itemBuilder: (context, index) {
+        return _buildFolderTile(allFolders, rootFolders[index]);
+      },
+    );
+  }
+
+  Widget _buildFolderTile(List<drive.File> allFolders, drive.File folder) {
+    final children =
+        allFolders
+            .where((f) => f.parents != null && f.parents!.contains(folder.id))
+            .toList();
+
+    return ExpansionTile(
+      leading: const Icon(Icons.folder),
+      title: Text(folder.name ?? 'Untitled folder'),
+      children:
+          children.isEmpty
+              ? [const ListTile(title: Text('No subfolders'))]
+              : children
+                  .map(
+                    (child) => Padding(
+                      padding: const EdgeInsets.only(left: 24.0),
+                      child: _buildFolderTile(allFolders, child),
+                    ),
+                  )
+                  .toList(),
+      onExpansionChanged: (expanded) {
+        if (expanded) {
+          // You could load files for this folder here if needed
+        }
+      },
+    );
+  }
 
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2,
@@ -363,35 +414,6 @@ class _DriveScreen extends State<UploadScreen> {
     return DateFormat('dd MMM yyyy - HH:mm').format(date.toLocal());
   }
 
-  Widget _buildFileTile(drive.File file) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      child: ListTile(
-        leading: const Icon(
-          Icons.insert_drive_file,
-          size: 30,
-          color: Colors.blueAccent,
-        ),
-        title: Text(file.name ?? 'Unnamed file'),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Size: ${formatBytes(file.size)}"),
-            Text("Created: ${formatDate(file.createdTime)}"),
-            Text(
-              "ID: ${file.id}",
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
-            ),
-          ],
-        ),
-        isThreeLine: true,
-        onTap: () => downloadFile(file),
-      ),
-    );
-  }
-
   Widget _buildSearchBar() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
@@ -430,42 +452,41 @@ class _DriveScreen extends State<UploadScreen> {
         child: Column(
           children: [
             AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
+
               backgroundColor: Colors.blueAccent,
               title: Row(
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.white,
-
                     child: Image.asset("assets/images/user.png", scale: 2),
                   ),
                   const SizedBox(width: 10),
-                  Text("Mohamed Ben Rabie",style: TextStyle(color: Colors.white),),
-                  Spacer(),
+                  const Text(
+                    "Mohamed Ben Rabie",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const Spacer(),
                   IconButton(
                     color: Colors.white,
-                    icon: Icon(Icons.logout),
+                    icon: const Icon(Icons.logout),
                     onPressed: () => _authController.logout(context),
                   ),
                 ],
               ),
-
               automaticallyImplyLeading: false,
             ),
-
             Expanded(
-              child: ListView.builder(
-                itemCount: _folderStack.length,
-                itemBuilder: (context, index) {
-                  final folderId = _folderStack[index];
-                  return Column(
-                    children: [
-                      Divider(),
-                      ListTile(
-                        title: Text(folderId),
-                        onTap: () => _navigateToFolder(folderId),
-                      ),
-                    ],
-                  );
+              child: FutureBuilder<List<drive.File>>(
+                future: _fetchAllFolders(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  }
+                  return _buildFolderTree(snapshot.data ?? []);
                 },
               ),
             ),
@@ -537,7 +558,10 @@ class _DriveScreen extends State<UploadScreen> {
                 if (index < _driveItems.length) {
                   return _buildItemTile(_driveItems[index]);
                 } else {
-                  return Align(alignment: Alignment.center,child: CircularProgressIndicator());
+                  return Align(
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(),
+                  );
                 }
               },
             ),

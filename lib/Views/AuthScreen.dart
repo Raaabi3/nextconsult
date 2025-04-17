@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nextconsult/Helpers/FacebookSIgnIn.dart';
 import 'package:nextconsult/Helpers/GoogleSIgnin.dart';
-import 'package:nextconsult/Widgets/CustomButton.dart';
-import 'package:nextconsult/Widgets/CustomTextField.dart';
 import 'package:nextconsult/Widgets/SignInForm.dart';
 import 'package:nextconsult/Widgets/SignUpForm.dart';
 import '../Controllers/Auth_Controller.dart';
-import '../Helpers/BiometricService.dart';
 import '../Helpers/LocalStorageService.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -99,14 +95,14 @@ class _AuthScreenState extends State<AuthScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          
+                          /*
                           GestureDetector(
                             onTap: signInWithFacebook,
                             child: CircleAvatar(
                               foregroundImage:AssetImage("assets/logos/facebook.png")
                             ),
                           ),
-                          SizedBox(width: 20),
+                          SizedBox(width: 20),*/
                           GestureDetector(
                             onTap: () async {
                              await signInWithGoogle(context);
